@@ -12,15 +12,23 @@ provider:
 
   iamRoleStatements:
     - Effect: "Allow"
-      Action:
-        - "cloudwatch:PutMetricData"
+      Action: "cloudwatch:PutMetricData"
       Resource: "*"
+    ## uncomment below if you want to forward normal log messages to another function
+    ## in which case, you'll need to give custom-metrics function permission to 
+    ## invoke the other function
+    # - Effect: "Allow"
+    #   Action: "lambda:InvokeFunction"
+    #   Resource: "arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:"
 
 functions:
   custom-metrics:
     handler: cloudwatch-logs-to-metrics/handler.handler
     description: Sends async metrics from CloudWatch Logs to CloudWatch Metrics
     memorySize: 128
+    ## uncomment below if you want to forward normal log messages to another function
+    # environment:
+      # forward_function: # function name for where normal log messages should be forwarded to
 
 resources:
   Resources:

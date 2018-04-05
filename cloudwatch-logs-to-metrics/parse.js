@@ -44,8 +44,8 @@ let customMetric = function (functionName, version, message) {
     let namespace   = metricData[4].trim();
         
     let dimensions = [
-      { Name: "FunctionName", Value: functionName },
-      { Name: "FunctionVersion", Value: version }
+      { Name: "Function", Value: functionName },
+      { Name: "Version", Value: version }
     ];
 
     // custom dimensions are optional, so don't assume they're there
@@ -58,7 +58,7 @@ let customMetric = function (functionName, version, message) {
             ? { Name: kv[0], Value: kv[1] }
             : null;
         })
-        .filter(x => x != null && x != undefined);
+        .filter(x => x != null && x != undefined && x.Name != "Function" && x.Name != "Version");
       dimensions = dimensions.concat(customDimensions);
     }
 

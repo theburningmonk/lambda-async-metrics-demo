@@ -26,8 +26,6 @@ let publish = co.wrap(function* (metricDatum, namespace) {
     };
   
     yield client.putMetricData(req).promise();
-  
-    console.log(`sent [${chunk.length}] metrics`);
   }  
 });
 
