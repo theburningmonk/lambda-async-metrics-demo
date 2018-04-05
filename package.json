@@ -1,0 +1,22 @@
+{
+    "name": "lambda-async-metrics-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "serverless": "^1.26.1",
+        "serverless-pseudo-parameters": "^1.4.2",
+        "serverless-sam": "0.0.5"
+    },
+    "dependencies": {
+        "aws-sdk": "^2.221.1",
+        "bluebird": "^3.5.1",
+        "co": "^4.6.0",
+        "lodash": "^4.17.5"
+    }
+}
